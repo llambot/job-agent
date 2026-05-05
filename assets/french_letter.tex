@@ -1,0 +1,83 @@
+\documentclass[11pt]{letter}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm, right=3cm, top=3.5cm, bottom=3.0cm]{geometry}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, urlcolor=teal]{hyperref}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+
+% Define the teal + grey colors to match resume
+\definecolor{teal}{RGB}{44,122,123}
+\definecolor{darkgrey}{RGB}{120,120,120}
+\color{darkgrey}  % Makes all text dark grey by default
+
+\usepackage[sfdefault]{roboto}  % Use Roboto (closest to Rubik)
+
+\AddToShipoutPicture*{%
+  \put(0,0){%
+    \includegraphics[width=\paperwidth,height=\paperheight]{CoverLetterBackground.pdf}
+  }
+}
+
+\address{Laurie Lambot\\ 
+4 Tall Pine Ln \\ 
+Boulder, CO 80302 \\ 
+laurie.s.lambot@gmail.com \\ 
+(847) 246-2086 \\ 
+\href{https://lambot.co}{\underline{\textbf{lambot.co}}}}
+
+\date{December 9th, 2025} 
+
+\begin{document}
+\begin{letter}{
+Hiring Manager \\
+Intertwine Associates LLC \\
+Remote Position
+}
+
+\opening{\vspace{12mm}Dear Hiring Manager,}
+
+\vspace{5mm}I am writing to express my strong interest in the scientific and technical advisor position at Intertwine Associates. With a PhD from ULB Faculty of Medicine, 15 years of research experience spanning computational neuroscience and biomedical engineering, and proven success translating research into practical applications, I bring the breadth of expertise, strategic thinking, and stakeholder communication skills this role demands.
+
+My background uniquely positions me to evaluate and shape biomedical R\&D programs. I completed five years of medical and biomedical school training at UCL Faculty of Medicine and a PhD at ULB Faculty of Medicine in Belgium, followed by postdoctoral positions at Northwestern's Feinberg School of Medicine and University of Chicago. This medical and biomedicale foundation, combined with computational expertise in Python, MATLAB, and machine learning applications, allows me to assess technologies from both clinical and technical perspectives—a critical skill for advising on programs spanning diagnostics, biosensors, and integrated biomedical platforms.
+
+At Modendo, I drove innovation from concept through market engagement. I developed wave-front shaping ultra-thin endoscopes for minimally invasive deep-brain imaging, designed ISO-compliant biocompatible cranial implants, and manufactured optical imaging tools (\href{https://lambot.co/project/chapter5/}{\underline{\textbf{see details}}} \href{https://lambot.co/project/chapter5/}{\underline{\textbf{here}}}). Beyond technical development, I represented the company at major conferences (BRAIN Initiative, NINDS, Society for Neuroscience), engaged directly with end users to refine product-market fit, and pitched to investors through the Ascent Deep Tech Accelerator. This work required synthesizing technical feasibility, clinical utility, regulatory pathways, and market potential—exactly the strategic assessment this role requires.
+
+\newpage
+My research track record demonstrates the technical depth and innovation capacity essential for this position. I independently designed and built custom imaging platforms that captured activity from 400+ neurons simultaneously while recording multimodal behavioral data—inte- grating CAD design, 3D printing, system engineering, and programming in MATLAB, Python, and C++ (\href{https://lambot.co/project/chapter2/}{\underline{\textbf{see full technical details}}} \href{https://lambot.co/project/chapter2/}{\underline{\textbf{here}}}). This required mastering system integration, synchronization of multiple data streams with sub-millisecond precision, and developing machine learning pipelines for real-time analysis. These technical capabilities—building complex experimental platforms from scratch, integrating diverse technologies, and solving multidisciplinary engineering challenges—directly translate to evaluating and shaping biomedical R\&D programs.
+
+I have extensive experience with computational modeling, systems integration, and AI/ML applications in biomedical contexts. At University of Chicago, I built generalized linear models to predict neural activity from multiple physiological signals and implemented machine learning tools like DeepLabCut for behavioral analysis. I designed and engineered custom experimental platforms from the ground up—integrating two-photon imaging with high-speed cameras, rotary encoders, pupilometry, and Arduino-controlled actuators. All components were synchronized with sub-millisecond precision, requiring expertise in hardware integration, signal processing, and real-time data management. I managed terabytes of imaging data and developed custom algorithms for neural classification, demonstrating capabilities directly relevant to assessing emerging integrated biomedical platforms.
+
+My collaborative research with Janssen Pharmaceuticals on Alzheimer's disease therapeutics strengthened my ability to work across industry and academic contexts, evaluate drug development strategies, and communicate with diverse stakeholders ranging from bench scientists to pharmaceutical executives. I presented findings to Janssen R\&D leadership and European neuroscience leaders, developed protocols for isolating transplanted human neurons, and contributed to work that advanced toward clinical trials. This experience taught me to assess technologies through multiple lenses—scientific validity, clinical translation potential, regulatory pathways, and commercial viability. This collaboration resulted in a publication in \textit{Neuron}, and my broader research contributions include publications in \textit{Nature Neuroscience} and the \textit{Journal of Neuroscience}.
+
+\textbf{I offer:}
+\begin{itemize}
+    \item 15+ years of experience in biomedical research and engineering, including medical school training
+    \item Medical device design and prototyping: cranial implants, optical imaging systems, ultra-thin endoscopes, custom experimental platforms
+    \item Proven ability to translate technical innovations into market-ready products through investor pitches and stakeholder engagement
+    \item Conference representation and client engagement: BRAIN Initiative, NINDS, Society for Neuroscience (35,000+ attendees)
+    \item Computational and AI/ML expertise: Python, MATLAB, statistical modeling, machine learning for biomedical applications
+    \item System integration and engineering: CAD design, 3D printing, multi-modal sensor synchronization, embedded systems (Arduino, C++)
+    \item Technical writing and strategic communication for diverse audiences, with peer review service for multiple journals
+    \item Industry R\&D experience bridging academic research and practical product development with regulatory awareness
+    \item Advanced imaging systems: 2-photon microscopy, optical intrinsic imaging, biosensor development, chronic recording systems
+\end{itemize}
+
+\vspace{5mm}I am particularly drawn to Intertwine's focus on operational excellence, efficient growth, and building durable businesses. My experience spans the full spectrum from fundamental research to practical engineering applications to market engagement, and I thrive in environments that demand technical depth, strategic assessment, and clear communication with diverse stakeholders. The role's emphasis on evaluating emerging technologies, identifying high-impact opportunities, and shaping program development aligns perfectly with my demonstrated capabilities in technical assessment, stakeholder engagement, and translating complex concepts for decision-makers.
+
+I am available for occasional national travel and hold work authorization in the United States, with prior experience working for the U.S. government (U.S. Forest Service). I would welcome the opportunity to discuss how my medical and biomedical training, computational neuroscience expertise, device development experience, business communication skills, and strategic thinking can contribute to your R\&D advisory initiatives.
+
+\closing{
+\vspace{10mm}
+\hspace*{-30mm}Respectfully,
+}
+
+\vspace{-10mm}
+\hspace*{33mm}\includegraphics[width=1.32in]{signeTeal.png}
+
+\vspace{2mm}
+\hspace*{33mm}Laurie Lambot, PhD
+
+\end{letter}
+\end{document}

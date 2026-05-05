@@ -1,0 +1,15 @@
+# Laurie's Job Agent — Python Dependencies
+
+python-jobspy>=0.1.0
+anthropic>=0.25.0
+pandas>=2.0.0
+
+# Gmail API
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=1.2.0
+google-api-python-client>=2.120.0
+
+# PDF compilation requires system package — NOT pip:
+# macOS:   brew install --cask mactex
+# Ubuntu:  sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-latex-extra
+# Minimal: sudo apt-get install texlive
