@@ -2,47 +2,44 @@ name: Daily Job Agent
 
 on:
   schedule:
-    # Run every day at 7:00 AM Mountain Time (= 14:00 UTC)
     - cron: '0 14 * * *'
-  workflow_dispatch:  # allows manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   run-job-agent:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install Python dependencies
+          cache: 'pip'
+      - name: Install Python deps
         run: pip install -r requirements.txt
-
-      - name: Install LaTeX (for PDF generation)
+      - name: Cache LaTeX
+        uses: actions/cache@v4
+        id: latex-cache
+        with:
+          path: /var/cache/apt/archives
+          key: latex-${{ runner.os }}-texlive
+      - name: Install LaTeX
+        if: steps.latex-cache.outputs.cache-hit != 'true'
         run: sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended
-
-      - name: Run job agent
+      - name: Run agent
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Gmail uses a pre-authorized token stored as a secret
           GMAIL_TOKEN_B64: ${{ secrets.GMAIL_TOKEN_B64 }}
         run: |
-          # Restore Gmail token from secret
           echo "$GMAIL_TOKEN_B64" | base64 -d > token.pickle
           python main.py --rank-only
-
-      - name: Upload today's jobs as artifact
+      - name: Upload jobs
         uses: actions/upload-artifact@v4
         with:
-          name: today-jobs-${{ env.TODAY }}
+          name: today-jobs-${{ github.run_id }}
           path: today_jobs.json
           retention-days: 7
-
-      - name: Commit updated database
+          if-no-files-found: warn
+      - name: Commit DB
         run: |
           git config user.name "Job Agent Bot"
           git config user.email "laurie@lambot.co"
