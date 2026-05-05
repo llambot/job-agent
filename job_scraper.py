@@ -11,11 +11,13 @@ from pathlib import Path
 
 # ── Try to import jobspy (install if missing) ──────────────────────────────
 try:
-    from jobspy import scrape_jobs
+    import time
+from jobspy import scrape_jobs
 except ImportError:
     import subprocess, sys
     subprocess.check_call([sys.executable, "-m", "pip", "install", "python-jobspy", "-q"])
-    from jobspy import scrape_jobs
+    import time
+from jobspy import scrape_jobs
 
 import pandas as pd
 
@@ -129,8 +131,7 @@ def scrape_all() -> list[dict]:
 
     for query_config in SEARCH_QUERIES:
         print(f"  Searching: '{query_config['query']}' in {query_config['location']}")
-	import time
-	time.sleep(2)
+		time.sleep(2)
         try:
             df = scrape_jobs(
                 site_name=SOURCES,
