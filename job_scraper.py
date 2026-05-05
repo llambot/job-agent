@@ -130,7 +130,7 @@ def scrape_all() -> list[dict]:
 
     for query_config in SEARCH_QUERIES:
         print(f"  Searching: '{query_config['query']}' in {query_config['location']}")
-		time.sleep(2)
+        time.sleep(2)
         try:
             df = scrape_jobs(
                 site_name=SOURCES,
