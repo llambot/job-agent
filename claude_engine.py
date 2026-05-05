@@ -12,7 +12,7 @@ import anthropic
 from profile import PROFILE_SUMMARY, PROFILE
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-MODEL  = "claude-sonnet-4-5-20251001"
+MODEL  = "claude-sonnet-4-6"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
