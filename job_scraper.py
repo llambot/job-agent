@@ -5,19 +5,18 @@ Deduplicates results and saves to SQLite.
 """
 
 import json
+import time
 import sqlite3
 from datetime import datetime, date
 from pathlib import Path
 
 # ── Try to import jobspy (install if missing) ──────────────────────────────
 try:
-    import time
-from jobspy import scrape_jobs
+    from jobspy import scrape_jobs
 except ImportError:
     import subprocess, sys
     subprocess.check_call([sys.executable, "-m", "pip", "install", "python-jobspy", "-q"])
-    import time
-from jobspy import scrape_jobs
+    from jobspy import scrape_jobs
 
 import pandas as pd
 
