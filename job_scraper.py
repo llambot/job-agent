@@ -129,14 +129,17 @@ def scrape_all() -> list[dict]:
 
     for query_config in SEARCH_QUERIES:
         print(f"  Searching: '{query_config['query']}' in {query_config['location']}")
+	import time
+	time.sleep(2)
         try:
             df = scrape_jobs(
                 site_name=SOURCES,
                 search_term=query_config["query"],
                 location=query_config["location"],
-                results_wanted=15,
-                hours_old=24,          # only jobs posted in last 24h
-                country_indeed="USA",
+                results_wanted=10,
+		hours_old=72,     # 3 days to catch more jobs
+		country_indeed="USA",
+		job_type="fulltime",
             )
         except Exception as e:
             print(f"    Warning: scrape failed for this query — {e}")
