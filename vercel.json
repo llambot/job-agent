@@ -1,1 +1,3 @@
-{"version": 2, "builds": [{"src": "laurie_job_agent.html", "use": "@vercel/static"}], "routes": [{"src": "/(.*)", "dest": "/laurie_job_agent.html"}]}
+{
+  "rewrites": [{"source": "/(.*)", "destination": "/laurie_job_agent.html"}]
+}
