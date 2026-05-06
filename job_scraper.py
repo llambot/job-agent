@@ -137,7 +137,7 @@ def scrape_all() -> list[dict]:
                 search_term=query_config["query"],
                 location=query_config["location"],
                 results_wanted=10,
-		hours_old=72,     # 3 days to catch more jobs
+		hours_old=720,     # 30 days to catch more jobs
 		country_indeed="USA",
 		job_type="fulltime",
             )
