@@ -57,7 +57,7 @@ def run_daily(dry_run: bool = False, rank_only: bool = False):
     output_file = Path(__file__).parent / "today_jobs.json"
     with open(output_file, "w", encoding='utf-8') as f:
         all_jobs = sorted(ranked, key=lambda x: x.get('claude_score') or 0, reverse=True)[:30]
-        json.dump(all_jobs, f, indent=2, ensure_ascii=True)
+        json.dump(all_jobs, f, indent=2, ensure_ascii=True, default=str)
 
     print(f"\nSTEP 3: Top {len(ranked)} jobs saved to {output_file}")
 
