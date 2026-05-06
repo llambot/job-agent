@@ -51,7 +51,7 @@ def rank_job(job: dict) -> dict:
     title    = job.get("title", "")
     company  = job.get("company", "")
     location = job.get("location", "")
-    desc = str(job.get("description", "") or "")[:3000]
+    desc = str(job.get("description", "") or "").encode('ascii', 'ignore').decode()[:3000]
 
     prompt = f"""
 Here is Laurie's profile:
