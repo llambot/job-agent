@@ -14,17 +14,8 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
-      - name: Install Python deps
+      - name: Install deps
         run: pip install -r requirements.txt
-      - name: Cache LaTeX
-        uses: actions/cache@v4
-        id: latex-cache
-        with:
-          path: /var/cache/apt/archives
-          key: latex-${{ runner.os }}-texlive
-      - name: Install LaTeX
-        if: steps.latex-cache.outputs.cache-hit != 'true'
-        run: sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended
       - name: Run agent
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
