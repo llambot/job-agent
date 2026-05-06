@@ -8,29 +8,50 @@ on:
 jobs:
   run-job-agent:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
-      - name: Install deps
+
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
-      - name: Run agent
+
+      - name: Cache LaTeX
+        id: latex-cache
+        uses: actions/cache@v4
+        with:
+          path: /usr/share/texlive
+          key: texlive-${{ runner.os }}-v1
+
+      - name: Install LaTeX
+        if: steps.latex-cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-plain-generic
+
+      - name: Run job agent
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GMAIL_TOKEN_B64: ${{ secrets.GMAIL_TOKEN_B64 }}
         run: |
           echo "$GMAIL_TOKEN_B64" | base64 -d > token.pickle
           python main.py --rank-only
-      - name: Upload jobs
+
+      - name: Upload today's jobs
         uses: actions/upload-artifact@v4
         with:
           name: today-jobs-${{ github.run_id }}
           path: today_jobs.json
           retention-days: 7
           if-no-files-found: warn
-      - name: Commit DB
+
+      - name: Commit updated files
         run: |
           git config user.name "Job Agent Bot"
           git config user.email "laurie@lambot.co"
