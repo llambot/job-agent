@@ -55,18 +55,9 @@ def run_daily(dry_run: bool = False, rank_only: bool = False):
 
     # Save top jobs to JSON for the app
     output_file = Path(__file__).parent / "today_jobs.json"
-    with open(output_file, "w") as f:
-        # Load existing jobs and merge with new ranked ones
-        existing = []
-        if output_file.exists():
-            try:
-                existing = json.load(open(output_file))
-            except:
-                existing = []
-        # Merge: new ranked jobs + existing, deduplicate by title+company, keep top 20
-        all_jobs = ranked + [j for j in existing if not any(r.get('title')==j.get('title') and r.get('company')==j.get('company') for r in ranked)]
-        all_jobs = sorted(all_jobs, key=lambda x: x.get('claude_score',0), reverse=True)[:20]
-        json.dump(all_jobs, f, indent=2, default=str)
+    with open(output_file, "w", encoding='utf-8') as f:
+        all_jobs = sorted(ranked, key=lambda x: x.get('claude_score') or 0, reverse=True)[:30]
+        json.dump(all_jobs, f, indent=2, ensure_ascii=True)
 
     print(f"\nSTEP 3: Top {len(ranked)} jobs saved to {output_file}")
 
