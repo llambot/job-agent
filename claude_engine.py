@@ -42,7 +42,8 @@ Respond ONLY in this exact JSON format (no markdown, no preamble):
   "why": "<2-3 sentences explaining the score in plain language>",
   "canada_flag": <true|false>,
   "remote": <true|false>,
-  "estimated_salary": "<salary range from posting or 'Not specified'>"
+  "estimated_salary": "<salary range from posting or 'Not specified'>",
+  "emoji": "<✨ if score>=70, 🍁 if Canadian, 🤡 if well-paid non-neuro surprise role, combine if needed, empty string otherwise>"
 }
 """
 
