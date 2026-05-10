@@ -31,6 +31,7 @@ Scoring criteria:
 - Canadian employer (especially Quebec): up to 15 pts
 - Intellectual challenge / pride-worthy work: up to 10 pts
 - Her clinical/EMT background adds value: up to 10 pts (bonus)
+- Well paid non-neuro role she would excel at (medical device, CAD, science writting, policy, BD): score normally, no cap, mark as surprise, mark emoji as 🤡
 
 Automatic score cap at 40 if the role does not require or value a PhD.
 Automatic 0 if the role is clearly below $60k or purely administrative.
