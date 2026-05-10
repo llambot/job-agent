@@ -78,6 +78,9 @@ def init_db():
 
 
 def already_seen(job_id: str) -> bool:
+    SKIP_DUPLICATE_CHECK = True
+     if SKIP_DUPLICATE_CHECK:
+        return FALSE
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute("SELECT 1 FROM jobs WHERE id = ?", (job_id,))
@@ -136,7 +139,7 @@ def scrape_all() -> list[dict]:
                 site_name=SOURCES,
                 search_term=query_config["query"],
                 location=query_config["location"],
-                results_wanted=10,
+                results_wanted=20,
 		hours_old=720,     # 30 days to catch more jobs
 		country_indeed="USA",
 		job_type="fulltime",
