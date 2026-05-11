@@ -79,7 +79,7 @@ def init_db():
 
 def already_seen(job_id: str) -> bool:
     SKIP_DUPLICATE_CHECK = True
-        if SKIP_DUPLICATE_CHECK:
+    if SKIP_DUPLICATE_CHECK:
         return FALSE
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
