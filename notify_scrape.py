@@ -12,8 +12,11 @@ for i, j in enumerate(jobs, 1):
     loc = j.get('location', '?')[:30]
     salary = j.get('est_salary') or j.get('salary_range') or 'Not specified'
     posted = j.get('date_posted', '?')
-    lines.append(f"{i}. {title} @ {company}")
-    lines.append(f"   📍 {loc} | 💰 {salary} | 📅 {posted}\n")
+    remote = '🌐' if j.get('is_remote') or j.get('remote') else '📍'
+    canada = '🍁' if j.get('canada_flag') or 'canada' in str(loc).lower() else ''
+    lines.append(f"{i}. {title} {canada}@ {company}")
+    lines.append(f"   {remote} {loc} | 💰 {salary} | 📅 {posted}\n")
+lines.append("jobs.lambot.co — enrichment at 6:20 AM MDT")
 
 body = '\n'.join(lines)
 msg = MIMEText(body)
