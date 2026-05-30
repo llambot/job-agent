@@ -153,8 +153,6 @@ def scrape_all() -> list[dict]:
 
         for _, row in df.iterrows():
             job = row.to_dict()
-			print("COLUMNS:", list(row.index.tolist()))
-			break
             job_url = str(job.get("job_url", ""))
             job_id  = job.get("id", job_url)  # use URL as fallback ID
 
